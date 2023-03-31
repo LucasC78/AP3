@@ -44,11 +44,10 @@ app.use(bodyParser.json());
     const login = await conn.query(query);
       if (login.length === 0) {
         console.log('c pas bon1')
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid email ' });
       }
-      
-      const match = await bcrypt.compare('test','$2b$10$AmK2PzEbY.U56xdQ7.ZB2.nh2GUi6cVOWMW720d5XTF3uixXqE1BG')
-      if (login[0].password !== password) {
+      const match = await bcrypt.compare('test','$2b$10$AmK2PzEbY.U56xdQ7.ZB2.nh2GUi6cVOWMW720d5XTF3uixXqE1BG');
+      if (!match) {
         console.log('c pas bon2')
         return res.status(401).json({ message: 'Invalid email or password' });
       }
