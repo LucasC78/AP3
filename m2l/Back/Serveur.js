@@ -18,20 +18,6 @@ const pool = mariadb.createPool({
 app.use(express.json())
 app.use(cors())
 
-app.get('/question', async (req, res) => {
-    let conn;
-    try {
-        console.log("lancement de la connexion")
-        conn = await pool.getConnection();
-        console.log("lancement de la requete select")
-        const rows = await conn.query('SELECT * FROM questions');
-        res.status(200).json(rows)
-    }
-    catch (err) {
-        console.log(err);
-    }
-})
-
 // Formulaire de connexion
 
 const bodyParser = require('body-parser');
@@ -46,7 +32,7 @@ app.use(bodyParser.json());
         console.log('c pas bon1')
         return res.status(401).json({ message: 'Invalid email ' });
       }
-      const match = await bcrypt.compare('test','$2b$10$AmK2PzEbY.U56xdQ7.ZB2.nh2GUi6cVOWMW720d5XTF3uixXqE1BG');
+      const match = await bcrypt.compare(password, login[0].password);
       if (!match) {
         console.log('c pas bon2')
         return res.status(401).json({ message: 'Invalid email or password' });
@@ -58,26 +44,32 @@ app.use(bodyParser.json());
   
 // Pour telecharger l'image des produits dans un dossier
 
+
 const multer = require('multer');
 const path = require('path');
 
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads');
+    cb(null, '/Dev/web/cours/AP3/m2l/m2l/src/img'); // replace with your desired folder path
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
+    const extension = path.extname(file.originalname);
+    const fileName =
+      path.basename(file.originalname, extension);
+    cb(null, fileName + extension);
+  },
 });
+
 const upload = multer({ storage: storage });
 
-app.post('/upload', upload.array('file'), (req, res) => {
-  console.log('Files uploaded successfully');
-  res.send('Files uploaded successfully');
-});
-
-app.listen(3001, () => {
-  console.log('Server started on port 3001');
+app.post('/api/download', upload.single('file'), (req, res) => {
+  try {
+    res.send('Le fichier a été téléchargé avec succès');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Une erreur est survenue lors du téléchargement du fichier');
+  }
 });
 
 
@@ -129,14 +121,11 @@ app.post('/support', async (req, res) => {
 
 app.post('/articles', async (req, res) => {
     let conn;
-        console.log("poste")
     try {
-        console.log("lancement de la connexion")
-        conn = await pool.getConnection();
-        console.log("lancement de la requete insert")
+        conn = await pool.getConnection();     
         console.log(req.body);
-        let requete = 'INSERT INTO articles (name, image, prix, quantité) VALUES (?, ?, ?, ?);'
-        let rows = await conn.query(requete, [req.body.name, req.body.image, req.body.prix, req.body.quantite]);
+        let requete = 'INSERT INTO articles (name, prix, image, quantite) VALUES (?, ?, ?, ?);'
+        let rows = await conn.query(requete, [req.body.name, req.body.prix, req.body.image, req.body.quantite]);
         console.log(rows);
         res.status(200).json(rows.affectedRows)
     }
@@ -145,39 +134,54 @@ app.post('/articles', async (req, res) => {
     }
 })
 
-// app.put('/question/:id', async (req, res) => {
-//     const id = parseInt(req.params.id)
-//     let conn;
-//     try {
-//         console.log("lancement de la connexion")
-//         conn = await pool.getConnection();
-//         console.log("lancement de la requete update")
-//         let requete = 'UPDATE questions SET theme = ?, question = ?, reponse = ? WHERE id = ?;'
-//         let rows = await conn.query(requete, [req.body.theme, req.body.question, req.body.reponse, id]);
-//         console.log(rows);
-//         res.status(200).json(rows.affectedRows)
-//     }
-//     catch (err) {
-//         console.log(err);
-//     }
-// })
+// afficher les articles
 
-// app.delete('/articled/:id', async (req, res) => {
-//     const id = parseInt(req.params.id)
-//     let conn;
-//     try {
-//         console.log("lancement de la connexion")
-//         conn = await pool.getConnection();
-//         console.log("lancement de la requete delete")
-//         let requete = 'DELETE FROM article WHERE  id= ?;'
-//         let rows = await conn.query(requete, [id]);
-//         console.log(rows);
-//         res.status(200).json(rows.affectedRows)
-//     }
-//     catch (err) {
-//         console.log(err);
-//     }
-// })
+app.get('/display', async (req, res) => {
+  let conn;
+  try {
+      conn = await pool.getConnection();
+      const rows = await conn.query('SELECT * FROM articles');
+      res.status(200).json(rows)
+  }
+  catch (err) {
+      console.log(err);
+  }
+})
+
+// modifier un article
+
+app.put('/display/:id', async (req, res) => {
+    const id = parseInt(req.params.id)
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let requete = 'UPDATE articles SET name = ?, prix = ?, image = ?, quantite = ? WHERE id = ?;'
+        let rows = await conn.query(requete, [req.body.name, req.body.prix, req.body.image, req.body.quantite, id]);
+        console.log(rows);
+        res.status(200).json(rows.affectedRows)
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
+// supprimer un article
+
+app.delete('/display/:id', async (req, res) => {
+    const id = parseInt(req.params.id)
+    let conn;
+    try {
+        console.log("lancement de la connexion")
+        conn = await pool.getConnection();
+        console.log("lancement de la requete delete")
+        const id = parseInt(req.params.id);
+        const rows = await conn.query("DELETE FROM articles WHERE id = ?", [id]);
+        res.status(200).json(rows.affectedRows)
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
 
 app.listen(8000, () => { // ouverture du serveur sur le port 8000
     console.log("Serveur à l'écoute") // afficher un message dans la console.

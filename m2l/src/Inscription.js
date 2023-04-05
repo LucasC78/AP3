@@ -70,7 +70,7 @@ function Inscription() {
                                   </div>
                                   
                                   <div className="d-flex ">
-                                      <button type='submit'>Se Connecter</button>
+                                      <button type='submit'>Création du compte</button>
                                   </div>
                                   {/* <button className="" type="reset">supprimer</button> */}
                               </form>

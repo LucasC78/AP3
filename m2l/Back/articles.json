@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "ballon",
+      "prix": "20",
+      "image": "test1",
+      "quantite": "10"
+    },
+    {
+      "id": 2,
+      "name": "raquette",
+      "prix": "15",
+      "image": "test2",
+      "quantite": "100"
+    },
+    {
+      "id": 3,
+      "name": "maillot",
+      "prix": "19",
+      "image": "test3",
+      "quantite": "1000"
+    },
+    {
+      "id": 4,
+      "name": "tapis de sport",
+      "prix": "13",
+      "image": "test4",
+      "quantite": "10000"
+    }
+  ]

@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 function Admin() {
-    const [articles, setArticles] = useState({ name: '', image: '', prix: ''});
+    const [articles, setArticles] = useState({ name: '', image: '', prix: '',quantite: ''});
     const [affichage, setAffichage] = useState(false);
    
     const handleSubmit = (e) => {
@@ -22,26 +22,6 @@ function Admin() {
         });
         handleSubmit1(e)
     }
-
- function handleChange(event) {
-    const [selectedFiles, setSelectedFiles] = useState(null);
-    setSelectedFiles(event.target.files);
-  }
-
-  function handleSubmit1(event) {
-    event.preventDefault();
-    const data = new FormData();
-    for (let i = 0; i < selectedFiles.length; i++) {
-      data.append('file', selectedFiles[i]);
-    }
-    axios.post('http://localhost:3001/upload', data)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
     
     return (
         <div>
@@ -172,7 +152,7 @@ function Admin() {
                                       <input type="text" placeholder="Nom de l'article" value={articles.name} onChange={e => setArticles({ ...articles, name: e.target.value })}/>
                                   </div>
                                   <div>
-                                      <input type="file" name='file' placeholder="image" value={articles.image} onChange={e => setArticles({ ...articles, image: e.target.value })}/>  
+                                      <input type="file" placeholder="image" value={articles.image} onChange={e => setArticles({ ...articles, image: e.target.value })}/>  
                                   </div>
                                   
                                   <div>
@@ -189,7 +169,7 @@ function Admin() {
                                   </div>
                                   
                               </form>
-                              {/* {affichage && <p>Votre compte a bien été créée</p>} */}
+                            
                           </div>
                       </div>
                       

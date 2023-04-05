@@ -31,13 +31,13 @@ function Navbar(){
                  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="watches.html"> A propos </Link>
+                  <Link className="nav-link" to="watches.html"> Ajouter </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Contacter">Contacter</Link>
+                  <Link className="nav-link" to="/Contacter">Supprimer</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Connexion">Se Connecter</Link>
+                  <Link className="nav-link" to="/Connexion">Modifier</Link>
                 </li>
               </ul>
               <div className="user_option-box">
