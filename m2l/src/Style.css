@@ -922,3 +922,11 @@ a:focus {
 .sizelogo {
   max-width: 50%;
 }
+
+/* style a propos*/
+
+.img-size1{
+  max-height : auto;
+  width : 450px;
+  padding: 3em 0em 0em 5em;
+}

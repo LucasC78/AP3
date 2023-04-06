@@ -2,11 +2,6 @@
 import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
-import Panier from './Panier.js';
-import App from './App.js';
-import Inscription from './Inscription';
-import Connexion from './Connexion.js';
-import Contacter from './Contacter.js';
 import { Routes, Route, Link } from "react-router-dom";
 import Logo1 from './img/logo.jpg'
 
@@ -15,7 +10,7 @@ function Navbar(){
         <header className="header_section">
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
-            <Link className="navbar-brand" to="index.html">
+            <Link className="navbar-brand" to="/">
               <img className='sizelogo' src={Logo1} alt=""/>
             </Link>
   
@@ -31,7 +26,7 @@ function Navbar(){
                  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="watches.html"> A propos </Link>
+                  <Link className="nav-link" to="/Apropos"> A propos </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Contacter">Contacter</Link>

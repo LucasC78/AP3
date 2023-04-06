@@ -38,7 +38,7 @@ app.use(bodyParser.json());
         return res.status(401).json({ message: 'Invalid email or password' });
       }
       console.log('c bon')
-      const indentifiant = {'id':login[0].id,'email':login[0].email}
+      const indentifiant = {'id':login[0].id,'email':login[0].email, 'statut':login[0].statut}
       res.status(200).json(indentifiant);
     });
   
@@ -51,7 +51,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/Dev/web/cours/AP3/m2l/m2l/src/img'); // replace with your desired folder path
+    cb(null, '/Dev/web/cours/AP3/m2l/m2l/src/img'); // remplacer le chemain de fichier par le sien
   },
   filename: function (req, file, cb) {
     const extension = path.extname(file.originalname);
@@ -136,7 +136,7 @@ app.post('/articles', async (req, res) => {
 
 // afficher les articles
 
-app.get('/display', async (req, res) => {
+app.get('/articles', async (req, res) => {
   let conn;
   try {
       conn = await pool.getConnection();
@@ -148,9 +148,25 @@ app.get('/display', async (req, res) => {
   }
 })
 
+// afficher l'article en fonction de l'id
+
+app.get('/articles/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  let conn;
+  try {
+      console.log("lancement de la connexion")
+      conn = await pool.getConnection();
+      console.log("lancement de la requete select")
+      const rows = await conn.query('SELECT * FROM articles WHERE id = ?', [id]);
+      res.status(200).json(rows)
+  }
+  catch (err) {
+      console.log(err);
+  }
+})
 // modifier un article
 
-app.put('/display/:id', async (req, res) => {
+app.put('/articles/:id', async (req, res) => {
     const id = parseInt(req.params.id)
     let conn;
     try {
@@ -167,13 +183,13 @@ app.put('/display/:id', async (req, res) => {
 
 // supprimer un article
 
-app.delete('/display/:id', async (req, res) => {
+app.delete('/articles/:id', async (req, res) => {
     const id = parseInt(req.params.id)
     let conn;
     try {
-        console.log("lancement de la connexion")
+        console.log("lancement de la supression")
         conn = await pool.getConnection();
-        console.log("lancement de la requete delete")
+        console.log("supression en cours")
         const id = parseInt(req.params.id);
         const rows = await conn.query("DELETE FROM articles WHERE id = ?", [id]);
         res.status(200).json(rows.affectedRows)

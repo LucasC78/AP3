@@ -1,47 +1,38 @@
 import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
-import { useParams, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from "react-router-dom";
+import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 
-const Supprimer = () => {
-    const [articles, setArticles] = useState([]);
+export default function SuppressionArticles() {
+    const { handleSubmit } = useForm();
+    let { id } = useParams()
+    let navigate = useNavigate()
 
-    const fetchData = async () => {
-      const result = await axios(
-        'http://localhost:8000/display',
-      );
-      setArticles(result.data);
+    const SuppressionArticles = async () => {
+
+        await axios.delete(`http://localhost:8000/articles/` + id)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    alert("Suppression réussi")
+                    navigate("/");
+                }
+                else {
+                    alert("Erreur de supression")
+                }
+            })
     }
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const handleDelete = async (id) => {
-        try {
-            const res = await axios.delete('http://localhost:8000/display/${id}');
-            console.log(res.data);
-            fetchData();
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     return (
         <div>
-            <ul>
-                {articles.map((articles) => (
-                    <li key={articles.id}>
-                        <p><hr/>nom : {articles.name} <br/> prix : {articles.prix} <br/> image : {articles.image} <br/> Quantité : {articles.quantite}</p>
-                        <button onClick={() => handleDelete(articles.id)}>Supprimé</button>
-                    </li>
-                ))}
-            </ul>
+            <form onSubmit={handleSubmit(SuppressionArticles)} >
+                <h2> Êtes-vous sûr de vouloir supprimer cette articles ?</h2>
+                <input type="submit" value="Valider" />
+                <Link to="/"> Annuler </Link>
+            </form>
         </div>
-    );
-};
-
-export default Supprimer;
+    )
+}
