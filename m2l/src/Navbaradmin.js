@@ -37,7 +37,8 @@ function Navbar(){
                   <Link className="nav-link" to="/Contacter">Supprimer</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Connexion">Modifier</Link>
+                  <Link className="nav-link" to="/Connexion">M
+                  odifier</Link>
                 </li>
               </ul>
               <div className="user_option-box">
