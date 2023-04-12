@@ -30,7 +30,7 @@ export default function EditArticle() {
                     article.map(articles => (
                         <div key={`articles-${articles.id}`}>
                             <div className='box-title' >
-                                Question n° {articles.id}  {articles.name}
+                                Articles n° {articles.id}  {articles.name}
                             </div>
                             <div className='box-body'>
                                 {articles.prix}
