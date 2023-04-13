@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import Body from './body';
 import Footer from './Footer.js';
-import Navbar from './Navbar.js';
 import Panier from './Panier.js';
 import Connexion from './Connexion.js';
 import Admin from './Admin.js';
@@ -19,7 +18,6 @@ import { Routes, Route, Link } from "react-router-dom"
 function App() {
   return (
     <div className="App">
-        <Navbar/>
        
         <Routes>
           <Route path="/" element ={ <Body/> }/>    

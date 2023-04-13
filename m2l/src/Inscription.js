@@ -3,7 +3,7 @@ import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
 import React, { useState, useEffect } from 'react';
-import Connexion from './Connexion.js';
+import Navbarconnexion from './Navbarconnexion.js';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
@@ -24,6 +24,8 @@ function Inscription() {
   }
 
     return (
+    <div>
+        <Navbarconnexion/>
       <div>
         <section className="contact_section">
         <div className="container">
@@ -82,6 +84,7 @@ function Inscription() {
               </div>
               </section><br/>
       </div>
+    </div>
     )
   }
   export default Inscription;

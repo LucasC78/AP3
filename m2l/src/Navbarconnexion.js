@@ -5,7 +5,7 @@ import './Style.css';
 import { Routes, Route, Link } from "react-router-dom";
 import Logo1 from './img/logo.jpg'
 
-function Navbar(){
+function NavbarConnexion(){
     return(
         <header className="header_section">
         <div className="container-fluid">
@@ -22,29 +22,17 @@ function Navbar(){
               <ul className="navbar-nav">
                 <li className="nav-item active">
                   
-                  <Link className="nav-link" to="/Adminmodify">Les Produits <span className="sr-only">(current)</span></Link>
+                  <Link className="nav-link" to="/Connexion">Se Connecter <span className="sr-only">(current)</span></Link>
                  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Admin"> Ajouter </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Contacter">Supprimer</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Connexion">Modifier</Link>
+                  <Link className="nav-link" to="/Inscription"> S'inscrire </Link>
                 </li>
               </ul>
               <div className="user_option-box">
                 <Link to="/Inscription">
                   <i className="fa fa-user" aria-hidden="true"></i>
                 </Link>
-                <Link to="/Panier">
-                  <i className="fa fa-cart-plus" aria-hidden="true"></i>
-                </Link>
-                {/* <Link to="/">
-                    <i className="fa fa-search" aria-hidden="true"></i>
-                </Link>   */}
               
               </div>
             </div>
@@ -54,4 +42,4 @@ function Navbar(){
 
  )
 };
-export default Navbar;
+export default NavbarConnexion;

@@ -4,7 +4,9 @@ import './Style.css';
 import Img10 from './img/table de pingpong1.png';
 import { Routes, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import Navbaradmin from './Navbaradmin.js';
+
 
 function Admin() {
     const [articles, setArticles] = useState({ name: '', image: '', prix: '',quantite: ''});
@@ -24,6 +26,8 @@ function Admin() {
     }
     
     return (
+    <div>
+        <Navbaradmin/>
         <div>
         {/* // Bandeau */}
           <div className="hero_area">
@@ -179,6 +183,7 @@ function Admin() {
           <br/><br/>
           
         </div>
+    </div>
     )
 
 };

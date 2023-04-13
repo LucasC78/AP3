@@ -31,20 +31,11 @@ function Navbar(){
                 <li className="nav-item">
                   <Link className="nav-link" to="/Contacter">Contacter</Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/Connexion">Se Connecter</Link>
-                </li>
               </ul>
               <div className="user_option-box">
-                <Link to="/Inscription">
-                  <i className="fa fa-user" aria-hidden="true"></i>
-                </Link>
                 <Link to="/Panier">
                   <i className="fa fa-cart-plus" aria-hidden="true"></i>
                 </Link>
-                {/* <Link to="/">
-                    <i className="fa fa-search" aria-hidden="true"></i>
-                </Link>   */}
               
               </div>
             </div>

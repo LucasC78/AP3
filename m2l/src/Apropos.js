@@ -4,7 +4,7 @@ import './Responsive.css';
 import './Style.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-
+import Navbar from './Navbar.js';
 import axios from 'axios';
 import Logo1 from './img/logo.jpg'
 
@@ -12,7 +12,8 @@ import Logo1 from './img/logo.jpg'
 function Apropos() {
    
     return (
-    
+    <div>
+        <Navbar/>
       <div><br/>
         <section className="contact_section">
         <div className="container">
@@ -72,6 +73,7 @@ function Apropos() {
               </div>
               </section><br/><br/>
       </div>
+    </div>
     )
   }
   export default Apropos;

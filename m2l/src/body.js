@@ -1,7 +1,7 @@
 import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
-import Contacter from './Contacter.js';
+import Navbar from './Navbar.js';
 import Img10 from './img/table de pingpong1.png';
 import Img11 from './img/gant.png';
 import Img12 from './img/raquette1.png';
@@ -13,6 +13,8 @@ import { Routes, Route, Link } from "react-router-dom"
 
 function Body() {
     return (
+      <div>
+        <Navbar/>
         <div>
         {/* // Bandeau */}
           <div className="hero_area">
@@ -410,6 +412,7 @@ function Body() {
           <br/><br/>
           
         </div>
+      </div>
     )
 
 };

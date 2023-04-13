@@ -2,12 +2,15 @@ import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
 import Img17 from './img/panier.png';
+import Navbar from './Navbar.js';
 import { Routes, Route, Link } from "react-router-dom"
 
 
 import Img11 from './img/gant.png';
 function Panier() {
   return (
+  <div>
+    <Navbar/>
     <div>
       <section className="about_section layout_padding">
               <div className="container  ">
@@ -45,6 +48,7 @@ function Panier() {
           </div>
           </section>
     </div>
+  </div>
   )
 }
 export default Panier;

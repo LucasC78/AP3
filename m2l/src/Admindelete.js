@@ -5,7 +5,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-
+import Navbaradmin from './Navbaradmin.js';
 
 export default function SuppressionArticles() {
     const { handleSubmit } = useForm();
@@ -27,6 +27,8 @@ export default function SuppressionArticles() {
             })
     }
     return (
+    <div>
+        <Navbaradmin/>
         <div>
             <form onSubmit={handleSubmit(SuppressionArticles)} >
                 <h2> Êtes-vous sûr de vouloir supprimer cette articles ?</h2>
@@ -34,5 +36,6 @@ export default function SuppressionArticles() {
                 <Link to="/"> Annuler </Link>
             </form>
         </div>
+    </div>
     )
 }

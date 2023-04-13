@@ -1,7 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Navbaradmin from './Navbaradmin.js';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import './ArticlesCard.css';
 
@@ -23,6 +24,8 @@ export default function EditArticle() {
     }, [])
 
     return (
+    <div>
+        <Navbaradmin/>
         <div className='body'>
             <h2> Les articles</h2>
             <div className="boxarticles">
@@ -33,7 +36,7 @@ export default function EditArticle() {
                                 Articles n° {articles.id}  {articles.name}
                             </div>
                             <div className='box-body'>
-                                {articles.prix}
+                                {articles.prix} €
                                 <br />
                                 {articles.image}
                                 <br />
@@ -49,5 +52,6 @@ export default function EditArticle() {
                 }
             </div>
         </div>
+    </div>
     )
 }

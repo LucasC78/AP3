@@ -3,6 +3,7 @@ import './Responsive.css';
 import './Style.css';
 import Img10 from './img/table de pingpong1.png';
 import Img13 from './img/balle de basket.png';
+import Navbar from './Navbar.js';
 import { Routes, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
@@ -23,6 +24,8 @@ function Contacter() {
         });
     }
     return(
+    <div>
+        <Navbar/>
         <div>
         {/* // Bandeau */}
           <div className="hero_area">
@@ -177,6 +180,7 @@ function Contacter() {
           <br/><br/>
           
         </div>
+    </div>
     )
 
 };

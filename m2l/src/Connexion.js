@@ -3,15 +3,22 @@ import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Add from './img/account.png';
-import Inscription from './Inscription';
+import Navbarconnexion from './Navbarconnexion.js';
 import axios from 'axios';
 
 
 function Connexion() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const [statut, setStatut] = useState('')
+    // const ls = localStorage;
+
+    // ls.setItem("mail", mail);
+    // ls.setItem("statut", statut);
+
+    // let navigate = useNavigate();
 
     const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,10 +28,13 @@ function Connexion() {
       password,
     });
     console.log(response.data);
+    alert("Vous êtes connecté")
+    
     // console.log("vous etes co");
   };
     return (
-    
+    <div>
+        <Navbarconnexion/>
       <div><br/>
         <section className="contact_section">
         <div className="container">
@@ -72,6 +82,7 @@ function Connexion() {
               </div>
               </section><br/><br/>
       </div>
+    </div>
     )
   }
   export default Connexion;

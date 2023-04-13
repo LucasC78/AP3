@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import Navbaradmin from './Navbaradmin.js';
 
 export default function EditArticles() {
     let { id } = useParams()
@@ -49,6 +50,8 @@ export default function EditArticles() {
     }, [])
 
     return (
+    <div>
+        <Navbaradmin/>
         <div className='container'>
             <h2> Editer un article</h2>
 
@@ -70,5 +73,6 @@ export default function EditArticles() {
                 <input type="submit" />
             </form>
         </div>
+    </div>
     )
 }
