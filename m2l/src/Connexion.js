@@ -18,7 +18,7 @@ function Connexion() {
     // ls.setItem("mail", mail);
     // ls.setItem("statut", statut);
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,9 +26,15 @@ function Connexion() {
     const response = await axios.post('http://localhost:8000/Connexion', {
       email,
       password,
-    });
-    console.log(response.data);
-    alert("Vous êtes connecté")
+    }).then(res => {
+        console.log(res)
+        if(res.status === 200) {
+            alert("Connexion reussi")
+            navigate("/")
+        }else{
+            alert("Erreur de connexion")
+        }
+    })
     
     // console.log("vous etes co");
   };
