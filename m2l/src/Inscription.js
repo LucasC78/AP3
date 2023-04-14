@@ -13,7 +13,7 @@ function Inscription() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/users', users)
+    axios.post('http://localhost:8000/addusers', users)
       .then(res => {
         console.log(res);
         setAffichage(true);

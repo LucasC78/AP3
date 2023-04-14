@@ -18,12 +18,15 @@ function Admin() {
         .then(res => {
           console.log(res);
           setAffichage(true);
+          alert("Article ajouté")
         })
         .catch(err => {
           console.log(err);
         });
         handleSubmit1(e)
+        
     }
+    
     
     return (
     <div>

@@ -4,12 +4,12 @@ import Body from './body';
 import Footer from './Footer.js';
 import Panier from './Panier.js';
 import Connexion from './Connexion.js';
-import Admin from './Admin.js';
-import Admindelete from './Admindelete.js';
+import AddArticles from './AddArticles.js';
+import DeleteArticles from './DeleteArticles.js';
 import Inscription from './Inscription.js';
 import Contacter from './Contacter.js';
-import Adminedit from './Adminedit.js';
-import Adminmodify from './Adminmodify.js';
+import EditArticles from './EditArticles.js';
+import ModifyArticles from './ModifyArticles.js';
 import Apropos from './Apropos.js';
 import Test from './Test.js';
 import { Routes, Route, Link } from "react-router-dom"
@@ -26,10 +26,10 @@ function App() {
           <Route path="/Connexion" element ={ <Connexion/> }/>
           <Route path="/Apropos" element ={ <Apropos/> }/>
           <Route path="/Contacter" element ={ <Contacter/> }/>
-          <Route path="/Admin" element ={ <Admin/> }/>
-          <Route path="/Admindelete/:id" element ={ <Admindelete/> }/>
-          <Route path="/Adminedit/:id" element ={ <Adminedit/> }/>
-          <Route path="/Adminmodify" element ={ <Adminmodify/> }/>
+          <Route path="/AddArticles" element ={ <AddArticles/> }/>
+          <Route path="/DeleteArticles/:id" element ={ <DeleteArticles/> }/>
+          <Route path="/EditArticles/:id" element ={ <EditArticles/> }/>
+          <Route path="/ModifyArticles" element ={ <ModifyArticles/> }/>
           <Route path="/Test" element ={ <Test/> }/>
         </Routes>
         <Footer/>

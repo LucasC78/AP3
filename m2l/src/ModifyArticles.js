@@ -43,8 +43,8 @@ export default function EditArticle() {
                                 {articles.quantite}
                             </div>
                             <div className='box-link1'>
-                                <Link to={'/Adminedit/' + articles.id}><FaPen /></Link>
-                                <Link to={'/Admindelete/'+ articles.id}><FaTrash /></Link>
+                                <Link to={'/EditArticles/' + articles.id}><FaPen /></Link>
+                                <Link to={'/DeleteArticles/'+ articles.id}><FaTrash /></Link>
                             </div>
                         </div>
                     ))

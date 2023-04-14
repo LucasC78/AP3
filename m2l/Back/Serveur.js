@@ -75,7 +75,7 @@ app.post('/api/download', upload.single('file'), (req, res) => {
 
 // Requete pour la création d'un compte utilisateur
 
-app.post('/users', async (req, res) => {
+app.post('/addusers', async (req, res) => {
     let conn;
         console.log("poste")
     try {
@@ -116,6 +116,8 @@ app.post('/support', async (req, res) => {
         console.log(err);
     }
 })
+
+//MODIFICATION D'ARTICLES
 
 // Formulaire admin pour ajouté des articles
 
@@ -193,6 +195,74 @@ app.delete('/articles/:id', async (req, res) => {
         console.log("supression en cours")
         const id = parseInt(req.params.id);
         const rows = await conn.query("DELETE FROM articles WHERE id = ?", [id]);
+        res.status(200).json(rows.affectedRows)
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
+//MODIFICATION USERS
+
+// afficher les utilisateurs
+
+app.get('/users', async (req, res) => {
+  let conn;
+  try {
+      conn = await pool.getConnection();
+      const rows = await conn.query('SELECT * FROM users');
+      res.status(200).json(rows)
+  }
+  catch (err) {
+      console.log(err);
+  }
+})
+
+// afficher les utilisateurs en fonction de l'id
+
+app.get('/users/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  let conn;
+  try {
+      console.log("lancement de la connexion")
+      conn = await pool.getConnection();
+      console.log("lancement de la requete select")
+      const rows = await conn.query('SELECT * FROM users WHERE id = ?', [id]);
+      res.status(200).json(rows)
+  }
+  catch (err) {
+      console.log(err);
+  }
+})
+
+// modifier un utilisateur
+
+app.put('/users/:id', async (req, res) => {
+    const id = parseInt(req.params.id)
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let requete = 'UPDATE users SET pseudo = ?, email = ?, password = ?  WHERE id = ?;'
+        let rows = await conn.query(requete, [req.body.pseudo, req.body.email, req.body.password, id]);
+        console.log(rows);
+        res.status(200).json(rows.affectedRows)
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
+// supprimer un utilisateurs
+
+app.delete('/users/:id', async (req, res) => {
+    const id = parseInt(req.params.id)
+    let conn;
+    try {
+        console.log("lancement de la supression")
+        conn = await pool.getConnection();
+        console.log("supression en cours")
+        const id = parseInt(req.params.id);
+        const rows = await conn.query("DELETE FROM users WHERE id = ?", [id]);
         res.status(200).json(rows.affectedRows)
     }
     catch (err) {

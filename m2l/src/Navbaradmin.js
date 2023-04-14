@@ -22,17 +22,17 @@ function Navbar(){
               <ul className="navbar-nav">
                 <li className="nav-item active">
                   
-                  <Link className="nav-link" to="/Adminmodify">Les Produits <span className="sr-only">(current)</span></Link>
+                  <Link className="nav-link" to="/ModifyArtciles">Les Produits <span className="sr-only">(current)</span></Link>
                  
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Admin"> Ajouter </Link>
+                  <Link className="nav-link" to="/AddArticles"> Ajouter un Produits </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Contacter">Supprimer</Link>
+                  <Link className="nav-link" to="/Contacter">Les utilisateurs</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Connexion">Modifier</Link>
+                  <Link className="nav-link" to="/Inscription">Aujouter un utilisateurs</Link>
                 </li>
               </ul>
               <div className="user_option-box">
