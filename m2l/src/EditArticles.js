@@ -58,13 +58,13 @@ export default function EditArticles() {
             <form onSubmit={handleSubmit(editArticles)}>
                 <label>Nom : </label>
                 <input defaultValue={name} onChange={(e) => setName(e.target.value)} />
-
+                <br/>
                 <label>Prix : </label>
                 <input defaultValue={prix} onChange={(e) => setPrix(e.target.value)} />
-
+                <br/>
                 <label>image : </label>
                 <input defaultValue={image} onChange={(e) => setImage(e.target.value)} />
-
+                <br/>
                 <label>Quantité : </label>
                 <input defaultValue={quantite} onChange={(e) => setQuantite(e.target.value)} />
 

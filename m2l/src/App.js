@@ -5,11 +5,14 @@ import Footer from './Footer.js';
 import Panier from './Panier.js';
 import Connexion from './Connexion.js';
 import AddArticles from './AddArticles.js';
-import DeleteArticles from './DeleteArticles.js';
 import Inscription from './Inscription.js';
 import Contacter from './Contacter.js';
+import DeleteArticles from './DeleteArticles.js';
 import EditArticles from './EditArticles.js';
 import ModifyArticles from './ModifyArticles.js';
+import DeleteUsers from './DeleteUsers.js';
+import EditUsers from './EditUsers.js';
+import ModifyUsers from './ModifyUsers.js';
 import Apropos from './Apropos.js';
 import Test from './Test.js';
 import { Routes, Route, Link } from "react-router-dom"
@@ -30,6 +33,9 @@ function App() {
           <Route path="/DeleteArticles/:id" element ={ <DeleteArticles/> }/>
           <Route path="/EditArticles/:id" element ={ <EditArticles/> }/>
           <Route path="/ModifyArticles" element ={ <ModifyArticles/> }/>
+          <Route path="/DeleteUsers/:id" element ={ <DeleteUsers/> }/>
+          <Route path="/EditUsers/:id" element ={ <EditUsers/> }/>
+          <Route path="/ModifyUsers" element ={ <ModifyUsers/> }/>
           <Route path="/Test" element ={ <Test/> }/>
         </Routes>
         <Footer/>

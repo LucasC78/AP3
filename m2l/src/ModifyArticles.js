@@ -7,14 +7,16 @@ import { FaTrash, FaPen } from 'react-icons/fa';
 import './ArticlesCard.css';
 
 export default function EditArticle() {
-    const [article, setArticle] = useState([])
+    const [articles, setArticles] = useState([])
     const [affichage, setAffichage] = useState(false)
 
+    articles.map((articles) => {console.log(articles)})
+    
     const recup = async () => {
         await axios.get(`http://localhost:8000/articles`)
             .then(res => {
                 console.log(res)
-                setArticle(res.data)
+                setArticles(res.data)
                 setAffichage(true)
             })
     }
@@ -30,7 +32,7 @@ export default function EditArticle() {
             <h2> Les articles</h2>
             <div className="boxarticles">
                 {affichage ?
-                    article.map(articles => (
+                    articles.map(articles => (
                         <div key={`articles-${articles.id}`}>
                             <div className='box-title' >
                                 Articles n° {articles.id}  {articles.name}
@@ -38,8 +40,11 @@ export default function EditArticle() {
                             <div className='box-body'>
                                 {articles.prix} €
                                 <br />
-                                {articles.image}
-                                <br />
+                            <div>
+                                <img src={`${process.env.PUBLIC_URL}/images/${articles.img}`}/>
+                                
+                            </div>
+                                <br/>
                                 {articles.quantite}
                             </div>
                             <div className='box-link1'>

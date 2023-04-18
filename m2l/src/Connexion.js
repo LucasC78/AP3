@@ -12,11 +12,9 @@ import axios from 'axios';
 function Connexion() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [statut, setStatut] = useState('')
-    // const ls = localStorage;
+    const ls = localStorage;
 
-    // ls.setItem("mail", mail);
-    // ls.setItem("statut", statut);
+
 
     let navigate = useNavigate();
 
@@ -27,10 +25,17 @@ function Connexion() {
       email,
       password,
     }).then(res => {
-        console.log(res)
+        console.log(res.data)
         if(res.status === 200) {
+            ls.setItem("email", res.data.email);
+            ls.setItem("statut", res.data.statut);
+            console.log(ls)
             alert("Connexion reussi")
-            navigate("/")
+                if (res.data.statut === 0) {
+                    navigate("/");
+                }else if (res.data.statut === 1) {
+                    navigate("/ModifyArticles");
+                }
         }else{
             alert("Erreur de connexion")
         }
@@ -38,7 +43,55 @@ function Connexion() {
     
     // console.log("vous etes co");
   };
-    return (
+
+      
+    // }).then(res => {
+    //     console.log(res)
+    //     if(res.status === 200) {
+    //         alert("Connexion reussi")
+    //         navigate("/")
+    //         console.log(ls)
+    //     }else{
+    //         alert("Erreur de connexion")
+    //     }
+    // })
+    // }).then(res => {
+    //     console.log(res);
+    //     if (res.status === 200) {
+    //         console.log(res.data[0]);
+    //         ls.setItem("email", res.data[0].email);
+    //         ls.setItem("statut", res.data[0].statut);
+    //         ls.setItem("pseudo", res.data[0].pseudo);
+    //         alert("Connexion réussie");
+    //         if (res.data[0].statut === 0) {
+    //             navigate("/");
+    //         }else if (res.data[0].statut === 1) {
+    //             navigate("/ModifyArticles");
+    //         }
+    //     }
+        
+    // });
+
+
+
+    //     }).then(res => {
+    //         console.log(res);
+    //         if (res.status === 200) {
+    //             console.log(res.data[0]);
+    //             ls.setItem("email", res.data[0].email);
+    //             ls.setItem("statut", res.data[0].statut);
+    //             ls.setItem("pseudo", res.data[0].pseudo);
+    //             alert("Connexion réussie");
+    //             if (res.data[0].statut === 0) {
+    //                 navigate("/");
+    //             }else if (res.data[0].statut === 1) {
+    //                 navigate("/ModifyArticles");
+    //             }
+    //         }
+    //     })
+    
+  
+return (
     <div>
         <Navbarconnexion/>
       <div><br/>
@@ -67,6 +120,7 @@ function Connexion() {
                                       </button>
                                   </div>
                               </form>
+                            
                           </div>
                       </div>
                       
