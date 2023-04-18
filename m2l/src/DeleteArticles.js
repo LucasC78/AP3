@@ -19,7 +19,7 @@ export default function SuppressionArticles() {
                 console.log(res)
                 if (res.status === 200) {
                     alert("Suppression réussi")
-                    navigate("/Adminmodify");
+                    navigate("/ModifyArticles");
                 }
                 else {
                     alert("Erreur de supression")
