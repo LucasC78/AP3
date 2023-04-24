@@ -37,7 +37,7 @@ export default function EditArticles() {
                 console.log(res)
                 if (res.status === 200) {
                     alert("Envoie réussi")
-                    navigate("/");
+                    navigate("/ModifyArticles");
                 }
                 else {
                     alert("Erreur d'envoi")
