@@ -35,7 +35,7 @@ export default function EditUsers() {
                 console.log(res)
                 if (res.status === 200) {
                     alert("Envoie réussi")
-                    navigate("/");
+                    navigate("/ModifyUsers");
                 }
                 else {
                     alert("Erreur d'envoi")
