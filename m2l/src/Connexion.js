@@ -45,6 +45,9 @@ function Connexion() {
   };
 
       
+    // res.data.statut = ls.getItems("statut")
+    
+    
     // }).then(res => {
     //     console.log(res)
     //     if(res.status === 200) {
