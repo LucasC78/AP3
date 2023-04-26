@@ -23,10 +23,10 @@ function App() {
     <div className="App">
        
         <Routes>
+          <Route path="/Connexion" element ={ <Connexion/> }/>
           <Route path="/" element ={ <Body/> }/>    
           <Route path="/Panier" element ={ <Panier/> }/>
           <Route path="/Inscription" element ={ <Inscription/> }/>
-          <Route path="/Connexion" element ={ <Connexion/> }/>
           <Route path="/Apropos" element ={ <Apropos/> }/>
           <Route path="/Contacter" element ={ <Contacter/> }/>
           <Route path="/AddArticles" element ={ <AddArticles/> }/>

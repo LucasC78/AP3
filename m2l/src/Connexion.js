@@ -17,6 +17,7 @@ function Connexion() {
 
 
     let navigate = useNavigate();
+    
 
     const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,67 +31,27 @@ function Connexion() {
             ls.setItem("email", res.data.email);
             ls.setItem("statut", res.data.statut);
             console.log(ls)
+            const statut = ls.getItem("statut")
             alert("Connexion reussi")
-                if (res.data.statut === 0) {
-                    navigate("/");
-                }else if (res.data.statut === 1) {
-                    navigate("/ModifyArticles");
-                }
-        }else{
+            if (statut === "0") {
+                navigate("/");
+            }else if (statut === "1") {
+                navigate("/ModifyArticles");
+            }
+        }
+        else{
             alert("Erreur de connexion")
         }
     })
     
-    // console.log("vous etes co");
+   .catch((error) => {
+    console.log(error);
+   });
+    
   };
 
+
       
-    // }).then(res => {
-    //     console.log(res)
-    //     if(res.status === 200) {
-    //         alert("Connexion reussi")
-    //         navigate("/")
-    //         console.log(ls)
-    //     }else{
-    //         alert("Erreur de connexion")
-    //     }
-    // })
-    // }).then(res => {
-    //     console.log(res);
-    //     if (res.status === 200) {
-    //         console.log(res.data[0]);
-    //         ls.setItem("email", res.data[0].email);
-    //         ls.setItem("statut", res.data[0].statut);
-    //         ls.setItem("pseudo", res.data[0].pseudo);
-    //         alert("Connexion réussie");
-    //         if (res.data[0].statut === 0) {
-    //             navigate("/");
-    //         }else if (res.data[0].statut === 1) {
-    //             navigate("/ModifyArticles");
-    //         }
-    //     }
-        
-    // });
-
-
-
-    //     }).then(res => {
-    //         console.log(res);
-    //         if (res.status === 200) {
-    //             console.log(res.data[0]);
-    //             ls.setItem("email", res.data[0].email);
-    //             ls.setItem("statut", res.data[0].statut);
-    //             ls.setItem("pseudo", res.data[0].pseudo);
-    //             alert("Connexion réussie");
-    //             if (res.data[0].statut === 0) {
-    //                 navigate("/");
-    //             }else if (res.data[0].statut === 1) {
-    //                 navigate("/ModifyArticles");
-    //             }
-    //         }
-    //     })
-    
-  
 return (
     <div>
         <Navbarconnexion/>

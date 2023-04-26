@@ -41,7 +41,7 @@ export default function EditArticle() {
                                 {articles.prix} €
                                 <br />
                             <div>
-                                <img src={`${process.env.PUBLIC_URL}/images/${articles.image}`}/>
+                                <img className='img-size2' src={`${process.env.PUBLIC_URL}/images/${articles.image}`}/>
                                 {/* src={`${process.env.PUBLIC_URL}/${articles.img}`} */}
                             </div>
                                 <br/>
