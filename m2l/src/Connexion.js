@@ -14,11 +14,8 @@ function Connexion() {
     const [password, setPassword] = useState('');
     const ls = localStorage;
 
-
-
     let navigate = useNavigate();
     
-
     const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('connexion')
