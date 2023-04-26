@@ -49,58 +49,6 @@ function Connexion() {
    });
     
   };
-
-
-      
-
-    // res.data.statut = ls.getItems("statut")
-    
-    
-    // }).then(res => {
-    //     console.log(res)
-    //     if(res.status === 200) {
-    //         alert("Connexion reussi")
-    //         navigate("/")
-    //         console.log(ls)
-    //     }else{
-    //         alert("Erreur de connexion")
-    //     }
-    // })
-    // }).then(res => {
-    //     console.log(res);
-    //     if (res.status === 200) {
-    //         console.log(res.data[0]);
-    //         ls.setItem("email", res.data[0].email);
-    //         ls.setItem("statut", res.data[0].statut);
-    //         ls.setItem("pseudo", res.data[0].pseudo);
-    //         alert("Connexion réussie");
-    //         if (res.data[0].statut === 0) {
-    //             navigate("/");
-    //         }else if (res.data[0].statut === 1) {
-    //             navigate("/ModifyArticles");
-    //         }
-    //     }
-        
-    // });
-
-
-
-    //     }).then(res => {
-    //         console.log(res);
-    //         if (res.status === 200) {
-    //             console.log(res.data[0]);
-    //             ls.setItem("email", res.data[0].email);
-    //             ls.setItem("statut", res.data[0].statut);
-    //             ls.setItem("pseudo", res.data[0].pseudo);
-    //             alert("Connexion réussie");
-    //             if (res.data[0].statut === 0) {
-    //                 navigate("/");
-    //             }else if (res.data[0].statut === 1) {
-    //                 navigate("/ModifyArticles");
-    //             }
-    //         }
-    //     })
-    
   
 return (
     <div>
