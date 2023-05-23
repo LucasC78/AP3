@@ -3,7 +3,7 @@ import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
 import { Routes, Route, Link } from "react-router-dom";
-import Logo1 from './img/logo.jpg'
+import Logo1 from './img/logo.png'
 
 function NavbarConnexion(){
     return(

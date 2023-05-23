@@ -69,7 +69,7 @@ export default function EditArticles() {
                 <input defaultValue={quantite} onChange={(e) => setQuantite(e.target.value)} />
 
                 {(errors.name || errors.prix || errors.image || errors.quantite) ? <span>Tous les champs doivent être remplis</span> : ""}
-
+                <br/>
                 <input type="submit" />
             </form>
         </div>

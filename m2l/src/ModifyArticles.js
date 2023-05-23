@@ -45,7 +45,7 @@ export default function EditArticle() {
                                 {/* src={`${process.env.PUBLIC_URL}/${articles.img}`} */}
                             </div>
                                 <br/>
-                                {articles.quantite}
+                                {articles.quantite} Qte
                             </div>
                             <div className='box-link1'>
                                 <Link to={'/EditArticles/' + articles.id}><FaPen /></Link>

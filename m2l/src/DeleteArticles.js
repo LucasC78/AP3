@@ -33,9 +33,10 @@ export default function SuppressionArticles() {
             <form onSubmit={handleSubmit(SuppressionArticles)} >
                 <h2> Êtes-vous sûr de vouloir supprimer cette articles ?</h2>
                 <input type="submit" value="Valider" />
-                <Link to="/"> Annuler </Link>
+                <Link className="btnannuler" to="/"> Annuler </Link>
             </form>
         </div>
+        <br/>
     </div>
     )
 }

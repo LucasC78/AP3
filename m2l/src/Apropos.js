@@ -6,7 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import Navbar from './Navbar.js';
 import axios from 'axios';
-import Logo1 from './img/logo.jpg'
+import Logo1 from './img/logo2.jpg';
+import Logo2 from './img/logo.png';
 
 
 function Apropos() {
@@ -54,7 +55,7 @@ function Apropos() {
                           <div className="form_container">
                               <div className="heading_container">
                                 <div className="heading_container">
-                                    <img className='img-size1' src={Logo1} alt=""></img>
+                                    <img className='img-size1' src={Logo2} alt=""></img>
                                 </div>
                               </div>
                              

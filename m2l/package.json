@@ -644,6 +644,7 @@
     "saxes": "^5.0.1",
     "scheduler": "^0.23.0",
     "schema-utils": "^3.1.1",
+    "script": "^0.1.4",
     "select-hose": "^2.0.0",
     "selfsigned": "^2.1.1",
     "semver": "^7.3.8",

@@ -1,6 +1,11 @@
 import './Bootstrap.css';
 import './Responsive.css';
 import './Style.css';
+import React from 'react'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BsFillBasket2Fill } from "react-icons/bs";
+import './ArticlesCard.css';
 import Navbar from './Navbar.js';
 import Img10 from './img/table de pingpong1.png';
 import Img11 from './img/gant.png';
@@ -12,6 +17,24 @@ import Img16 from './img/tapis de sport.png';
 import { Routes, Route, Link } from "react-router-dom"
 
 function Body() {
+  const [articles, setArticles] = useState([])
+  const [affichage, setAffichage] = useState(false)
+
+  articles.map((articles) => {console.log(articles)})
+  
+  const recup = async () => {
+      await axios.get(`http://localhost:8000/articles`)
+          .then(res => {
+              console.log(res)
+              setArticles(res.data)
+              setAffichage(true)
+          })
+  }
+
+  useEffect(() => {
+      recup()
+  }, [])
+
     return (
       <div>
         <Navbar/>
@@ -130,7 +153,7 @@ function Body() {
           <div className="container">
             <div className="heading_container heading_center">
               <h2>
-                Article de sport
+                Articles de sport
               </h2>
             </div>
             <div className="row">
@@ -338,8 +361,37 @@ function Body() {
             </div>
           </div>
           </section>
-      
-      
+
+          <div className='body'>
+            <h2> Les articles temporaires</h2>
+            <br/>
+            <div>
+            <div className="boxarticles">
+                {affichage ?
+                    articles.map(articles => (
+                        <div key={`articles-${articles.id}`}>
+                            <img className='img-size2' src={`${process.env.PUBLIC_URL}/images/${articles.image}`}/>
+                              {/* src={`${process.env.PUBLIC_URL}/${articles.img}`} */}
+                        <div className='box-body'>
+                          {articles.name}
+                        <div className='box-title' >
+                          {articles.prix} €
+                        </div>
+                      </div>
+                      <div className='box-link1'>
+                        <Link to={'/EditArticles/' + articles.id}><BsFillBasket2Fill /></Link>
+                      </div>         
+                    </div>
+                    ))
+                    : <p>Chargement...</p>
+                }
+              
+            </div>
+            
+          </div>
+        </div>
+    
+          <br/><br/>
 
           <section className="about_section layout_padding">
               <div className="container  ">
@@ -367,50 +419,7 @@ function Body() {
                   </div>
               </div>
           </section>
-
-          <br/><br/>
-
-          <section className="contact_section">
-              <div className="container">
-                  <div className="row">
-                      <div className="col-md-6">
-                          <div className="form_container">
-                              <div className="heading_container">
-                                  <h2>
-                                  Nous contacter
-                                  </h2>
-                              </div>
-                              <form action="">
-                                  <div>
-                                      <input type="text" placeholder="Nom et prénom " />
-                                  </div>
-                                  <div>
-                                      <input type="email" placeholder="Email" />
-                                  </div>
-                                  <div>
-                                      <input type="text" placeholder="Téléphone" />
-                                  </div>
-                                  <div>
-                                      <input type="text" className="message-box" placeholder="Message" />
-                                  </div>
-                                  <div className="d-flex ">
-                                      <button>
-                                          Envoyer
-                                      </button>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                      <div className="col-md-6">
-                          <div className="img-box">
-                              <img src={Img13} alt="" />
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>
-          <br/><br/>
-          
+          <hr/>
         </div>
       </div>
     )
