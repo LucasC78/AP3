@@ -18,22 +18,38 @@ import { Routes, Route, Link } from "react-router-dom"
 
 function Body() {
   const [articles, setArticles] = useState([])
-  const [affichage, setAffichage] = useState(false)
-
-  articles.map((articles) => {console.log(articles)})
-  
-  const recup = async () => {
-      await axios.get(`http://localhost:8000/articles`)
-          .then(res => {
-              console.log(res)
-              setArticles(res.data)
-              setAffichage(true)
-          })
-  }
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
-      recup()
-  }, [])
+    fetchArticles();
+    getCartFromLocalStorage();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/articles');
+      setArticles(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addToCart = (article) => {
+    const updatedCart = [...cart, article];
+    setCart(updatedCart);
+    saveCartToLocalStorage(updatedCart);
+  };
+
+  const getCartFromLocalStorage = () => {
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    if (savedCart && savedCart.length > 0) {
+      setCart(savedCart);
+    }
+  };
+
+  const saveCartToLocalStorage = (cartItems) => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  };
 
     return (
       <div>
@@ -149,7 +165,7 @@ function Body() {
           </section>
           </div>
           {/*  Produits */}
-          <section className="shop_section layout_padding">
+          {/* <section className="shop_section layout_padding">
           <div className="container">
             <div className="heading_container heading_center">
               <h2>
@@ -360,38 +376,32 @@ function Body() {
               </div>
             </div>
           </div>
-          </section>
-
+          </section> */}
+          <br/><br/><br/><br/>
+        
           <div className='body'>
-            <h2> Les articles temporaires</h2>
-            <br/>
-            <div>
+            <h2> Articles de sport</h2>
+          </div>
+          <br/><br/>
             <div className="boxarticles">
-                {affichage ?
-                    articles.map(articles => (
-                        <div key={`articles-${articles.id}`}>
-                            <img className='img-size2' src={`${process.env.PUBLIC_URL}/images/${articles.image}`}/>
-                              {/* src={`${process.env.PUBLIC_URL}/${articles.img}`} */}
-                        <div className='box-body'>
-                          {articles.name}
-                        <div className='box-title' >
-                          {articles.prix} €
+                  {articles.map((article) => (
+                    <div key={article.id} className="col">
+                      <div className="">
+                        <img className='img-size2' src={`${process.env.PUBLIC_URL}/images/${article.image}`}/>
+                        <div className="card-body">
+                          <h5 className="card-title">{article.name}</h5>
+                          <p className="card-text">{article.prix}€</p>
+                          {/* <p className="card-text">Quantité: {article.quantite}</p> */}
+                          <button onClick={() => addToCart(article)} className="btncard">
+                            Ajouter au panier
+                          </button>
                         </div>
                       </div>
-                      <div className='box-link1'>
-                        <Link to={'/EditArticles/' + articles.id}><BsFillBasket2Fill /></Link>
-                      </div>         
                     </div>
-                    ))
-                    : <p>Chargement...</p>
-                }
-              
-            </div>
-            
-          </div>
-        </div>
+                  ))}
+                </div>
     
-          <br/><br/>
+          <br/><br/><br/><br/>
 
           <section className="about_section layout_padding">
               <div className="container  ">
@@ -419,7 +429,7 @@ function Body() {
                   </div>
               </div>
           </section>
-          <hr/>
+          <br/>
         </div>
       </div>
     )

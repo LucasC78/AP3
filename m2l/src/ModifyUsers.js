@@ -28,6 +28,7 @@ export default function ModifyUsers() {
         <Navbaradmin/>
         <div className='body'>
             <h2> Les utilisateurs</h2>
+            <br/><br/>
             <div className="boxarticles">
                 {affichage ?
                     users.map(users => (
@@ -52,6 +53,7 @@ export default function ModifyUsers() {
                 }
             </div>
         </div>
+        <br/><br/><br/><br/>
     </div>
     )
 }

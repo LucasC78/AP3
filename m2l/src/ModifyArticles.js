@@ -27,9 +27,10 @@ export default function EditArticle() {
 
     return (
     <div>
-        <Navbaradmin/>
+        <Navbaradmin/><br/>
         <div className='body'>
             <h2> Les articles</h2>
+            <br/>
             <div className="boxarticles">
                 {affichage ?
                     articles.map(articles => (
@@ -57,6 +58,7 @@ export default function EditArticle() {
                 }
             </div>
         </div>
+        <br/><br/><br/><br/>
     </div>
     )
 }

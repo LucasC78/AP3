@@ -6,18 +6,36 @@
 .boxarticles>* {
     padding: 5px 0;
     flex: 0 0 400px;
-    border: solid 1px #f0d43a;
+    border: solid 5px #f0d43a;
     margin: 10px auto;
+    border-radius: 30px 30px 30px 30px;
 }
 
 .box-title {
     font-weight: bold;
 }
 
-
-
 .box-link1>a {
     color: #ea1111;
     margin: 0 3px;
+}
+
+.btncard{
+    background-color: #ea1111;
+    border-color: #ea1111;
+    color: #fff;
+    border-radius: 10px 10px 10px 10px;
+}
+.btncard1{
+    background-color: #ea1111;
+    border-color: #ea1111;
+    color: #fff;
+}
+
+.btncard2{
+    background-color: #f0d43a;
+    border-color: #f0d43a;
+    color: #fff;
+    border-radius: 10px 10px 10px 10px;
 }
 

@@ -10,7 +10,7 @@ function NavbarConnexion(){
         <header className="header_section">
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
-            <Link className="navbar-brand" to="index.html">
+            <Link className="navbar-brand" to="/Connexion">
               <img className='sizelogo' src={Logo1} alt=""/>
             </Link>
   

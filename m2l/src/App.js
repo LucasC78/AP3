@@ -12,6 +12,7 @@ import EditArticles from './EditArticles.js';
 import ModifyArticles from './ModifyArticles.js';
 import DeleteUsers from './DeleteUsers.js';
 import EditUsers from './EditUsers.js';
+import AddUsers from './AddUsers.js';
 import ModifyUsers from './ModifyUsers.js';
 import Apropos from './Apropos.js';
 import Test from './Test.js';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/DeleteUsers/:id" element ={ <DeleteUsers/> }/>
           <Route path="/EditUsers/:id" element ={ <EditUsers/> }/>
           <Route path="/ModifyUsers" element ={ <ModifyUsers/> }/>
+          <Route path="/AddUsers" element ={ <AddUsers/> }/>
           <Route path="/Test" element ={ <Test/> }/>
         </Routes>
         <Footer/>

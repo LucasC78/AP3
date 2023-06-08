@@ -10,7 +10,7 @@ function Navbar(){
         <header className="header_section">
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
-            <Link className="navbar-brand" to="index.html">
+            <Link className="navbar-brand" to="/ModifyUsers">
               <img className='sizelogo' src={Logo1} alt=""/>
             </Link>
   
@@ -38,9 +38,6 @@ function Navbar(){
               <div className="user_option-box">
                 <Link to="/Inscription">
                   <i className="fa fa-user" aria-hidden="true"></i>
-                </Link>
-                <Link to="/Panier">
-                  <i className="fa fa-cart-plus" aria-hidden="true"></i>
                 </Link>
                 {/* <Link to="/">
                     <i className="fa fa-search" aria-hidden="true"></i>

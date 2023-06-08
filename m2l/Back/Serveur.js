@@ -77,25 +77,39 @@ app.post('/api/download', upload.single('file'), (req, res) => {
 
 app.post('/addusers', async (req, res) => {
     let conn;
-        console.log("poste")
-    try {
-    bcrypt.hash(req.body.password, 10)
-        .then(async (hash) => {
-        console.log("lancement de la connexion")
+
+      try {
+        // Vérifier si l'adresse e-mail existe déjà dans la base de données
         conn = await pool.getConnection();
-        console.log("lancement de la requete insert")
-        console.log(req.body);
-        let requete = 'INSERT INTO users (pseudo, email, password, statut) VALUES (?, ?, ?, 0);'
-        let rows = await conn.query(requete, [req.body.pseudo, req.body.email, hash]);
-        console.log(rows);
-        res.status(200).json(rows.affectedRows)
-        })
+        let [rows2] = await conn.query('SELECT COUNT(*) AS count FROM users WHERE email = ?', [req.body.email]);
+        
+        let rows3 = Number(rows2['count']); // transforme le résultat en nombre
+
+        console.log(rows3); // affiche uniquement le chiffre zéro
+        if (rows3 == 0) {
+          
+          const hash = await bcrypt.hash(req.body.password, 10);
+          const requete = 'INSERT INTO users (pseudo, email, password, statut) VALUES (?, ?, ?, 0);';
+          const insertResult = await conn.query(requete, [req.body.pseudo, req.body.email, hash]);
+          res.status(200).json(insertResult.affectedRows); 
+          console.log("le compte a bien été créé");
+        //   return res.status(400).json({ error: 'Cette adresse e-mail est déjà utilisée' });
+        } else {
+            // L'adresse e-mail existe déjà dans la base de données, renvoyer une réponse d'erreur
+            console.log("Cette adresse e-mail est déjà utilisée");
+            return res.status(400).json({ error: 'Cette adresse e-mail est déjà utilisée' });    
+             
+        }
+
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: 'Une erreur est survenue lors de la création du compte utilisateur' });
+    } finally {
+      if (conn) {
+        conn.release();
+      }
     }
-    catch (err) {
-        console.log(err);
-    }
-    
-})
+  });
 
 // Pour envoyé une requête au support sur le formualire de la page contacte
 
